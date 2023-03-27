@@ -1,0 +1,14 @@
+@use './functions' as f;
+
+$ez-ball-size: f.toRem(60);
+$ez-primary-color: #ff7657;
+$ez-secondary-color: #fff;
+$ez-border-width: 5px;
+$ez-spin-duration: 1000ms;
+$ez-spin-timing: linear;
+$ez-spin-repeat: infinite;
+
+// Transitions
+$duration: 300ms;
+$duration-long: 2s;
+$timing: ease-in-out;

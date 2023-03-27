@@ -1,0 +1,25 @@
+@use '../abstracts/' as abs;
+
+.ez-border-grow {
+    @include abs.balls-no-bg;
+    position: relative;
+    @include abs.spin(ez-border-grow);
+
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        inset: 0px;
+        border-radius: 50%;
+        border: abs.$ez-border-width solid abs.$ez-primary-color;
+        @include abs.anim-prop(ez-border-grow-before, calc(abs.$ez-spin-duration * 2));
+    }
+}
+
+@keyframes ez-border-grow-before {
+    0% { clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)}
+    25% { clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)}
+    50% { clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)}
+    75% { clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%)}
+    100% { clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);}
+}

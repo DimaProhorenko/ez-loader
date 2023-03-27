@@ -1,0 +1,76 @@
+@use './vars' as v;
+
+@mixin balls($bg: v.$ez-primary-color) {
+  display: block;
+  width: v.$ez-ball-size;
+  height: v.$ez-ball-size;
+  background-color: $bg;
+  border-radius: 50%;
+}
+
+@mixin balls-no-bg() {
+  @include balls(null);
+}
+
+@mixin anim-prop($name, $duration: v.$ez-spin-duration, $timing: v.$ez-spin-timing, $repeat: v.$ez-spin-repeat) {
+  animation: $name $duration $timing $repeat;
+}
+
+@mixin spin($name, $duration: v.$ez-spin-duration, $timing: v.$ez-spin-timing, $repeat: v.$ez-spin-repeat) {
+  animation: $name $duration $timing $repeat;
+
+  @keyframes #{$name} {
+    from {
+      rotate: 0deg;
+    }
+    to {
+      rotate: 360deg;
+    }
+  }
+}
+
+@mixin spin-alternate($name, $duration: v.$ez-spin-duration, $timing: v.$ez-spin-timing, $repeat: v.$ez-spin-repeat) {
+  animation: $name $duration $timing $repeat;
+
+  @keyframes #{$name} {
+    from {
+      rotate: 0deg;
+    }
+    to {
+      rotate: -360deg;
+    }
+  }
+}
+
+@mixin transition($prop, $duration: v.$duration, $timing: v.$timing) {
+    transition: $prop $duration $timing;
+}
+
+
+@mixin position($position, $args) {
+    @each $o in top right bottom left {
+      $i: index($args, $o);
+   
+      @if $i and $i + 1<= length($args) and type-of(nth($args, $i + 1)) == number  {
+        #{$o}: nth($args, $i + 1);
+      }
+    }
+    position: $position;
+  }
+   
+  @mixin absolute($args) {
+    @include position(absolute, $args);
+  }
+
+  @mixin absolute-center {
+    @include position(absolute, top 50% left 50%);
+    translate: -50% -50%;
+  }
+   
+  @mixin fixed($args) {
+    @include position(fixed, $args);
+  }
+   
+  @mixin relative($args) {
+    @include position(relative, $args);
+  }

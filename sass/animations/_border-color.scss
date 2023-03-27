@@ -1,0 +1,11 @@
+@use '../abstracts/' as abs;
+
+.ez-border-color {
+    @include abs.balls-no-bg();
+    border: abs.$ez-border-width solid white;
+    border-block-end-color: abs.$ez-primary-color;
+    // animation: ez-border-color-rotate abs.$ez-spin-duration abs.$ez-spin-timing abs.$ez-spin-repeat;
+    @include abs.spin(ez-border-color-rotate);
+}
+
+// @include abs.spin(ez-border-color-rotate);

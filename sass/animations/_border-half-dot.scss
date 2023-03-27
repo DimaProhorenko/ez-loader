@@ -1,0 +1,23 @@
+@use '../abstracts/' as abs;
+
+.ez-border-half-dot {
+    @include abs.balls-no-bg;
+    border-width: abs.$ez-border-width;
+    border-color: abs.$ez-secondary-color;
+    border-style: solid solid dotted dotted;
+
+    @include abs.spin(ez-border-half-dot-anim, abs.$duration-long, linear);
+
+
+    &::before {
+        content: '';
+        width: 80%;
+        height: 80%;
+        border-radius: 50%;
+        @include abs.absolute-center;
+        border-color: abs.$ez-primary-color;
+        border-width: abs.$ez-border-width;
+        border-style: inherit;
+        @include abs.spin-alternate(ez-border-half-dot-before, calc(abs.$duration-long / 2), linear);
+    }
+}

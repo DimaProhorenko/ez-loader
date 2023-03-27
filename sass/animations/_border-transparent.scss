@@ -1,0 +1,8 @@
+@use '../abstracts/' as abs;
+
+.ez-border-transparent {
+    @include abs.balls-no-bg;
+    border: abs.$ez-border-width solid abs.$ez-secondary-color;
+    border-block-end-color: transparent;
+    @include abs.spin(ez-border-transparent);
+}
